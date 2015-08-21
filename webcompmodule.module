@@ -1,1 +1,54 @@
 <?php
+
+/**
+* Implements hook_menu().
+*/
+function webcompmodule_menu() {
+$items = array();
+$items['admin/config/content/webcompmodule'] = array(
+'title' => t('Configuration of WebCompModule'),
+'description' => t('Configure the WebCompModule module'),
+'page callback' => 'drupal_get_form',
+'page arguments' => array('webcompmodule_admin'),
+'access arguments' => array('administer webcompmodule settings'),
+'type' => MENU_NORMAL_ITEM,
+);
+
+return $items;
+}
+
+/**
+* Implements hook_permission().
+*/
+function webcompmodule_permission() {
+return array(
+'administer webcompmodule settings' => array(
+'title' => t('Administer webcompmodule configurations'),
+'restrict access' => true,
+)
+);
+}
+
+
+/**
+* Formulario de configuración
+*
+* @return array The form structure.
+*/
+function webcompmodule_admin() {
+$form = array();
+
+// Algo que configurar
+$form['webcompmodule_something'] = array(
+'#type' => 'textfield',
+'#title' => t('Something'),
+'#default_value' => variable_get(‘webcompmodule_something’, ""),
+'#size' => 60,
+'#maxlength' => 250,
+'#description' => t("Something"),
+'#required' => TRUE,
+);
+
+return system_settings_form($form);
+}
+

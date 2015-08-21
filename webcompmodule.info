@@ -3,5 +3,8 @@ description = Modulo de Drupal para habilitar Webcomponents
 core = 7.x
 package = tools
 php = 5.3
+version = 7.x-0.1-dev
 
 dependencies[] = ctools
+
+configure = admin/config/content/webcompmodule
