@@ -6,9 +6,9 @@
 function webcompmodule_preprocess_html(&$vars) {
   // Agrega el soporte para webcomponents	
   
-  $file_uri = file_create_url(file_build_uri('webcomponentsjs/webcomponents.js'));
+  $file_uri = drupal_get_path('module', 'webcompmodule').'/webcomponentsjs/webcomponents.js';
   drupal_add_js($file_uri, array(
-    'weight' => '-1000',
+    'weight' => '-5000',
     'type' => 'external',
     'scope' => 'header'
     )
